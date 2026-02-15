@@ -4,7 +4,7 @@ services:
     ports:
       - ${MANYFOLD_PORT:-3214}:3214
     volumes:
-      - ${MANYFOLD_MODELS_DIRECTORY:-manyfold_models}:/models
+      - manyfold_models:/models
     environment:
       DATABASE_ADAPTER: postgresql
       DATABASE_HOST: postgres-server
@@ -14,8 +14,8 @@ services:
       DATABASE_PASSWORD: ${MANYFOLD_DB_PASSWORD}
       SECRET_KEY_BASE: ${MANYFOLD_SECRET_KEY_BASE}
       REDIS_URL: redis://redis-server:6379/1
-      PUID: 1000
-      PGID: 1000
+      PUID: ${PUID:-1000}
+      PGID: ${PGID:-1000}
       MANYFOLD_HOST: ${MANYFOLD_HOST:-https://manyfold.benjiao.net}
       RAILS_FORCE_SSL: ${MANYFOLD_FORCE_SSL:-true}
     restart: unless-stopped
@@ -37,7 +37,7 @@ services:
   postgres-server:
     image: postgres:15
     volumes:
-      - ${MANYFOLD_DB_DIRECTORY:-manyfold_db_data}:/var/lib/postgresql/data
+      - manyfold_db_data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: manyfold
       POSTGRES_PASSWORD: ${MANYFOLD_DB_PASSWORD}
