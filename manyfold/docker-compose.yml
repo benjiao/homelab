@@ -14,8 +14,6 @@ services:
       DATABASE_PASSWORD: ${MANYFOLD_DB_PASSWORD}
       SECRET_KEY_BASE: ${MANYFOLD_SECRET_KEY_BASE}
       REDIS_URL: redis://redis-server:6379/1
-      PUID: ${PUID:-1000}
-      PGID: ${PGID:-1000}
       MANYFOLD_HOST: ${MANYFOLD_HOST:-https://manyfold.benjiao.net}
       RAILS_FORCE_SSL: ${MANYFOLD_FORCE_SSL:-true}
     restart: unless-stopped
