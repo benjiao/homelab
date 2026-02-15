@@ -35,7 +35,7 @@ services:
   postgres-server:
     image: postgres:15
     volumes:
-      - ${MANYFOLD_DB_DATA}:/var/lib/postgresql/data
+      - ${MANYFOLD_DB_DIRECTORY}:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: manyfold
       POSTGRES_PASSWORD: ${MANYFOLD_DB_PASSWORD}
