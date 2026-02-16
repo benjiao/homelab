@@ -38,6 +38,8 @@ Here's is a high-level overview of the setup:
         - HomeAssistant - Home automation platform.
         - Immich - Photo and video management.
 
+Camera feeds are being processed by [Frigate](docker/frigate/README.md). Climate sensors are being ingested by HomeAssistant. Smart Plugs and Lights are being controlled by HomeAssistant.
+
 ## License
 This work is licensed under a
 [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
