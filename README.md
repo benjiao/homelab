@@ -1,7 +1,8 @@
 # Homelab
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
-## Docker Stacks
+## 1. Services
+### 1.1. Docker Stacks
 This is a collection of Docker Compose configs that I use to setup stacks in my Portainer installtion.
 
 - [**Frigate**](docker/frigate/README.md) - Security camera feed processing, archiving, and object identification.
@@ -10,7 +11,19 @@ This is a collection of Docker Compose configs that I use to setup stacks in my 
 - [**Registry**](docker/registry/README.md) - Local Docker container registry.
 - [**Uptime Kuma**](docker/uptime-kuma/README.md) - Uptime monitoring.
 
-## License
+### 1.2. Proxmox
+#### 1.2.1. Containers
+- **Pi-hole**
+- **NginxProxyManager**
+
+#### 1.2.2. VMs
+- **HomeAssistant**
+- **Immich**
+
+## 2. Architecture
+## 3. Network
+
+## 4. License
 This work is licensed under a
 [Creative Commons Attribution-ShareAlike 4.0 International License][cc-by-sa].
 
