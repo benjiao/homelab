@@ -9,7 +9,7 @@ and understand the systems I run.
 ## Docs
 - [Architecture](docs/architecture.md)
 - [Network](docs/network.md)
-- [Docker](docker/README.md)
+- Docker
     - [**Frigate**](docker/frigate/README.md) - Security camera feed processing, archiving, and object identification.
     - **Gitea** - Git hosting service 
     - **Homepage** - Application dashboard for all of my homelab services.
