@@ -1,0 +1,30 @@
+services:
+  server:
+    image: docker.gitea.com/gitea:1.25.4
+    container_name: gitea
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - GITEA__database__DB_TYPE=sqlite3
+      - GITEA__database__PATH=/data/gitea/gitea.db
+      - GITEA__server__SSH_DOMAIN=git.benjiao.net
+      - GITEA__server__DOMAIN=git.benjiao.net
+      - GITEA__server__ROOT_URL=https://git.benjiao.net 
+      - GITEA__server__START_SSH_SERVER=true
+      - GITEA__server__SSH_LISTEN_PORT=2222
+      - GITEA__server__SSH_PORT=2221
+      - GITEA__webhook__ALLOWED_HOST_LIST=woodpecker.benjiao.net
+      - GITEA__oauth2__ACCESS_TOKEN_EXPIRATION_TIME=86400
+      - GITEA__oauth2__INVALIDATE_REFRESH_TOKENS=false
+    restart: always
+    volumes:
+      - gitea_data:/data
+      - gitea_jwt:/var/lib/gitea/jwt
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "3007:3000"
+      - "2221:2222"
+volumes:
+  gitea_data:
+  gitea_jwt:
