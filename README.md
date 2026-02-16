@@ -12,7 +12,7 @@ and understand the systems I run.
 - [Network](docs/network.md)
 
 ## Architecture Overview
-My homelab runs on a mix of Raspberry Pis and physical servers. I manage my containers using Portainer and Proxmox VE (PVE), letting me easily organize and run services across all devices.
+My homelab runs on a mix of Raspberry Pis and servers built out of old PC hardware. I manage my containers using Portainer and Proxmox VE (PVE), letting me easily organize and run services across all devices.
 
 Here's is a high-level overview of the setup:
 
