@@ -1,16 +1,28 @@
 services:
+  git-checkout:
+    image: bitnami/git:latest
+    working_dir: /temp
+    command: >
+      bash -c "
+        git clone https://github.com/benjiao/homelab.git &&
+        cp -R ./homelab/docker/grafana/prometheus.yml /etc/prometheus_config/prometheus.yml
+      "
+    volumes:
+      - prometheus_config:/etc/prometheus_config
+
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
     restart: unless-stopped
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      # - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - prometheus_data:/prometheus
+      - prometheus_config:/etc/prometheus_config
     command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--config.file=/etc/prometheus_config/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
-      - '--web.console.libraries=/etc/prometheus/console_libraries'
-      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.console.libraries=/etc/prometheus_config/console_libraries'
+      - '--web.console.templates=/etc/prometheus_config/consoles'
       - '--web.enable-lifecycle'
     ports:
       - '${PROMETHEUS_PORT:-9090}:9090'
@@ -31,6 +43,7 @@ services:
 volumes:
   grafana_data:
   prometheus_data:
+  prometheus_config:
 
 networks:
   monitoring:
