@@ -1,11 +1,22 @@
 services:
+  git-checkout:
+    image: bitnami/git:latest
+    working_dir: /temp
+    command: >
+      bash -c "
+        git clone https://github.com/benjiao/homelab.git &&
+        cp -R ./homelab/docker/homepage/config /etc/homepage_config
+      "
+    volumes:
+      - homepage_config:/etc/homepage_config
+
   homepage:
     image: ghcr.io/gethomepage/homepage:latest
     container_name: homepage
     ports:
       - ${PORT:-3000}:3000
     volumes:
-      - ${CONFIG_PATH}:/app/config
+      - homepage_config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       HOMEPAGE_ALLOWED_HOSTS: home.benjiao.net
@@ -14,3 +25,5 @@ services:
       HOMEPAGE_VAR_OPENWEATHERMAP_API_KEY: ${HOMEPAGE_VAR_OPENWEATHERMAP_API_KEY}
       HOMEPAGE_VAR_WEATHERAPI_API_KEY: ${HOMEPAGE_VAR_WEATHERAPI_API_KEY}
     restart: unless-stopped
+volumes:
+  homepage_config:
