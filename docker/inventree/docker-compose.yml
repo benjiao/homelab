@@ -153,7 +153,7 @@ services:
             - INVENTREE_ALLOWED_HOSTS=${INVENTREE_ALLOWED_HOSTS}
             - INVENTREE_CORS_ORIGIN_ALLOW_ALL=${INVENTREE_CORS_ORIGIN_ALLOW_ALL}
         volumes:
-            - /srv/docker/inventree_config/Caddyfile:/etc/caddy/Caddyfile:ro,z
+            - /srv/docker/inventree_config/:/etc/caddy/:ro,z
             - ${INVENTREE_EXT_VOLUME}/static:/var/www/static:z
             - ${INVENTREE_EXT_VOLUME}/media:/var/www/media:z
             - ${INVENTREE_EXT_VOLUME}:/var/log:z
