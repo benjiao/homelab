@@ -4,6 +4,7 @@ pve.local
 pi01.local
 pi02.local
 frigate.local
+inventree.local
 
 [prometheus_targets]
 pve.local

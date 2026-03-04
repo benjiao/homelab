@@ -1,0 +1,25 @@
+---
+- hosts: inventree.local
+  vars:
+    postgres_users_no_log: false
+    postgresql_databases:
+      - name: inventree
+        owner: inventree
+        encoding: UTF8
+        locale: en_US.UTF-8
+    postgresql_users:
+      - name: inventree
+        password: inventree
+    postgresql_privs:
+      - db: inventree
+        roles: inventree  
+        type: database
+        privs: ALL
+  roles:
+    - role: benjiao.common
+    - role: geerlingguy.postgresql
+    - role: geerlingguy.pip
+      vars:
+        pip_install_packages:
+          - name: psycopg2-binary
+            virtualenv: /opt/inventree/env
