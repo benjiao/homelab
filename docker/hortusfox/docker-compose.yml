@@ -32,8 +32,6 @@ services:
       MARIADB_DATABASE: ${HORTUSFOX_MARIADB_DATABASE}
       MARIADB_USER: ${HORTUSFOX_MARIADB_USER}
       MARIADB_PASSWORD: ${HORTUSFOX_MARIADB_PASSWORD}
-    ports:
-      - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
 
